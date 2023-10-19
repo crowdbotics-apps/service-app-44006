@@ -32,6 +32,8 @@ urlpatterns = [
     # Override email confirm to use allauth's HTML view instead of rest_auth's API view
     path("rest-auth/registration/account-confirm-email/<str:key>/", confirm_email),
     path("rest-auth/registration/", include("dj_rest_auth.registration.urls")),
+
+    path("gitservices/", include("gitservices.urls")),
 ]
 
 admin.site.site_header = "service-app"

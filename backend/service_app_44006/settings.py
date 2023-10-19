@@ -74,6 +74,7 @@ INSTALLED_APPS = [
 LOCAL_APPS = [
     'home',
     'users.apps.UsersConfig',
+    'gitservices'
 ]
 THIRD_PARTY_APPS = [
     'rest_framework',
@@ -91,14 +92,16 @@ THIRD_PARTY_APPS = [
     'import_export',
 ]
 MODULES_APPS = get_modules()
-
-INSTALLED_APPS += LOCAL_APPS + THIRD_PARTY_APPS + MODULES_APPS
+if DEBUG:
+    INSTALLED_APPS += LOCAL_APPS + THIRD_PARTY_APPS
+else:
+    INSTALLED_APPS += LOCAL_APPS + THIRD_PARTY_APPS + MODULES_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
